@@ -1,5 +1,5 @@
 import "./general.css";
 function Input() {
-  return <input type="text" className="inp" />;
+  return <input type="number" className="inp" />;
 }
 export default Input;

@@ -16,4 +16,10 @@
   border-radius: 10px;
   font-size: 30px;
   background-color: antiquewhite;
+  text-decoration: none;
+}
+.inp::-webkit-outer-spin-button,
+.inp::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
