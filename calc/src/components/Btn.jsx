@@ -1,7 +1,7 @@
 import "./general.css";
-function Btn({ latter }) {
+function Btn({ latter, handleonclick }) {
   return latter.map((lat) => (
-    <button type="button" className="btn">
+    <button type="button" className="btn" onClick={() => handleonclick(lat)}>
       {lat}
     </button>
   ));

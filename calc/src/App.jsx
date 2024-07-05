@@ -27,12 +27,51 @@ function App() {
     ".",
   ];
   let head = "Calculater";
+  let currenttext = "";
+  let [textvalue, textstate] = useState("");
+  let handleonclick = (lat) => {
+    if (
+      lat !== "c" &&
+      lat !== "=" &&
+      lat !== "+" &&
+      lat !== "-" &&
+      lat !== "*" &&
+      lat !== "/" &&
+      lat !== "."
+    ) {
+      textvalue = textvalue + lat;
+      textstate(textvalue);
+    } else if (
+      (lat !== "c" && lat !== "=" && lat === "+") ||
+      lat === "-" ||
+      lat === "*" ||
+      lat === "/" ||
+      lat === "."
+    ) {
+      if (
+        textvalue.charAt(textvalue.length - 1) !== "+" &&
+        textvalue.charAt(textvalue.length - 1) !== "-" &&
+        textvalue.charAt(textvalue.length - 1) !== "*" &&
+        textvalue.charAt(textvalue.length - 1) !== "/" &&
+        textvalue.charAt(textvalue.length - 1) !== "."
+      ) {
+        textvalue = textvalue + lat;
+        textstate(textvalue);
+      }
+    } else if (lat === "=") {
+      textvalue = eval(textvalue);
+      textstate(textvalue);
+    } else if (lat === "c") {
+      textvalue = "";
+      textstate(textvalue);
+    }
+  };
   return (
     <center>
       <div className="container">
         <Head tittle={head}></Head>
-        <Input></Input>
-        <Btn latter={arr}></Btn>
+        <Input textvalue={textvalue}></Input>
+        <Btn latter={arr} handleonclick={handleonclick}></Btn>
       </div>
     </center>
   );
